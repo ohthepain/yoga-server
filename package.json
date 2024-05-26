@@ -1,0 +1,28 @@
+{
+  "name": "yoga-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "getschema": "cp prisma/yoga-schema.prisma ../shared-db/prisma/ && cd ../shared-db && node concatenate-schemas.js && cp ./prisma/schema.prisma prisma/ && cd ../yoga-server",
+    "generate": "cp ../shared-db/prisma/schema.prisma ./prisma/ && npx prisma generate",
+    "migrate": "cd ../shared-db && node concatenate-schemas.js && npx prisma migrate dev --schema=./prisma/schema.prisma && cd ../yoga-server",
+    "start": "node ./main.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.14.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.4.5",
+    "express": "~4.16.1",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "just": "^0.1.8",
+    "prettier": "^3.2.5",
+    "prisma": "^5.14.0",
+    "supertest": "^7.0.0"
+  }
+}
