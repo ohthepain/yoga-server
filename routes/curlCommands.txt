@@ -1,4 +1,0 @@
-
-curl -X POST localhost:3001/api/auth  -H "Content-Type: application/json" -d '{"installId": "1000"}'
-
-curl -X POST localhost:3001/api/sessions/complete  -H "Content-Type: application/json" -d '{"installId": "1000", "sessionId": "my session"}' -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlmYWYxOTU5LWU5MmQtNGEzMC1iNzg0LTFmNWU0MDMwYzM1ZSIsInJvbGVzIjpbXSwiaWF0IjoxNzE2Njk1NjA4LCJleHAiOjE3MTY3ODIwMDh9.WrEw4nGDFcklZawjNJFVYF9AeavbX8fFTu3uBGtSAqg"
