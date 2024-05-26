@@ -7,7 +7,14 @@
     "generate": "cp ../shared-db/prisma/schema.prisma ./prisma/ && npx prisma generate",
     "migrate": "cd ../shared-db && node concatenate-schemas.js && npx prisma migrate dev --schema=./prisma/schema.prisma && cd ../yoga-server",
     "start": "node ./main.js",
-    "test": "jest"
+    "test": "jest",
+    "dockerbuild": "sh ./docker_cleanup.sh && docker build -t yoga-server .",
+    "dockerrun": "docker run --name yoga-server-container -p 3001:3001 -d yoga-server",
+    "dockerdebug": "docker run --name yoga-server-container -p 3001:3001 yoga-server",
+    "dockertest": "docker run --rm yoga-server npm run test",
+    "dockerpull": "docker pull ohthepain/yoga-server:latest",
+    "dockerpush": "echo do not push from your machine. image was build with your machine architecture. correct architecture is graviton",
+    "dockerclean": "sh ./docker_cleanup.sh"
   },
   "dependencies": {
     "@prisma/client": "^5.14.0",
