@@ -1,4 +1,6 @@
+/secrets/
 routes/curlCommands.txt
+docker-compose.yml
 
 # Logs
 logs

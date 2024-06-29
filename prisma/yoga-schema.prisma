@@ -1,1 +1,43 @@
-// yoga-schema has been moved to the shared-db project
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
+// Uncomment the stuff above if you want to highlight errors
+
+model YogaUser {
+  id           String        @id @default(uuid())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  yogaSessions YogaSession[]
+  installs     Install[]
+}
+
+model YogaSession {
+    id           String        @id @default(uuid())
+    createdAt    DateTime      @default(now())
+    updatedAt    DateTime      @updatedAt
+    sessionId    String
+    yogaUserId   String
+    yogaUser YogaUser @relation(fields: [yogaUserId], references: [id], onDelete: Cascade)
+}
+
+model Device {
+    id           String        @id
+    installs     Install[]
+}
+
+model Install {
+    id           String        @id @default(uuid())
+    yogaUserId   String
+    deviceId     String
+    device       Device        @relation(fields: [deviceId], references: [id])
+    yogaUser     YogaUser      @relation(fields: [yogaUserId], references: [id])
+    createdAt    DateTime      @default(now())
+    updatedAt    DateTime      @updatedAt
+}
